@@ -7,6 +7,7 @@ from PIL import ImageTk
 from tkinter import *
 import tkinter as tk
 from tkinter import *
+from tkinter import font as tkFont
 
 try:
     from PIL import Image
@@ -23,20 +24,28 @@ class Application:
         self.master=master
         master.configure(bg="white")
         master.title("Welcome To HackerSir")
-        master.geometry('1300x400')
+        master.geometry('1500x600')
         master.resizable(False, False)
-        buttonstart = tk.Button(master, text = "Start", fg = "white", command = self.start)
+        buttonstart = tk.Button(master, text = "Start", fg = "white", command = self.start, height=2, width=10)
+        myfont = tkFont.Font(size=25)
         buttonstart.configure(bg='black')
+        buttonstart['font'] = myfont
         buttonstart.grid(row = 1, column = 0)
 
-        buttonquit = tk.Button(master, text = "Quit", fg = "white", command=self.quitit)
+        buttonquit = tk.Button(master, text = "Quit", fg = "white", command=self.quitit, height=2, width=10)
+        myfont1 = tkFont.Font(size=25)
         buttonquit.configure(bg='black')
+        buttonquit['font'] = myfont1
         buttonquit.grid(row = 1, column = 2)
+
+        buttonignore = tk.Button(master, text = "XXX", fg = "white", command = self.start, height=5, width=10, pady = 45)
+        buttonignore.configure(bg='white')
+        buttonignore.grid(row = 1, column = 4)
 
         image = ImageTk.PhotoImage(Image.open("./img/P1.png"))
         label = tk.Label(image=image)
-        label.photo = image   # assign to class variable to resolve problem with bug in `PhotoImage`
-        label.grid(row=100, column = 0, rowspan=20, columnspan=3)
+        label.photo = image # assign to class variable to resolve problem with bug in `PhotoImage`]
+        label.grid(row=50, column = 0, rowspan=20, columnspan=3)
 
         # self.timertext = tk.DoubleVar()
         # self.timertext.set(0)
